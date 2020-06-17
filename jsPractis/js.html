@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+	<head>
+        <title>JS GAME</title>
+        <style>
+            #shape{
+                background-color: blue;
+                width: 200px;
+                height: 200px;
+                position: relative;
+               
+            }
+        </style>
+    </head>
+    <body>
+        <p id="disMesage"> </p>
+ <div id="shape"></div>
+         
+         <script type="text/javascript">
+         var start = new Date().getTime();
+
+        function resetTime(){
+
+            start = new Date().getTime();
+            document.getElementById("shape").style.display="block";          
+
+        }
+        function randomMove(){
+
+            var top = Math.random() * 400;
+            var left = Math.random() * 400;
+
+            document.getElementById("shape").style.top= top + "px";  
+            document.getElementById("shape").style.left= left + "px";          
+
+            }
+            function randomSize(){
+
+            var widthSize = (Math.random() * 400) +20;
+            
+
+            document.getElementById("shape").style.width= widthSize + "px";  
+            document.getElementById("shape").style.height= widthSize + "px";          
+
+            }
+
+            function randomShape(){
+                var randomNumber = Math.random();
+                document.getElementById("shape").style.border="1px solid";
+                if(randomNumber > 0.5){
+                    document.getElementById("shape").style.borderRadius="50%";
+                }else{
+                    document.getElementById("shape").style.borderRadius="0%";
+                }
+            }
+
+             function getRandomColor() {
+                    var letters = '0123456789ABCDEF';
+                    var color = '#';
+                    for (var i = 0; i < 6; i++) {
+                        color += letters[Math.floor(Math.random() * 16)];
+                    }
+                    return color;
+                    }
+
+                    function setRandomColor() {
+                    $("#colorpad").css("background-color", getRandomColor());
+                }
+
+                
+
+         document.getElementById("shape").onclick=function(){
+            
+            
+            document.getElementById("shape").style.display="none"; 
+            var end = new Date().getTime();            
+            var time = (end - start)/1000;
+            document.getElementById("disMesage").innerHTML="your time is " + time +  " s";
+            randomShape();
+            resetTime();
+            randomMove();
+            document.getElementById("shape").style.backgroundColor= getRandomColor();
+            randomSize();
+            
+            
+            
+            
+            }
+           // 
+     
+               
+      	</script>
+    </body>
+</html>
